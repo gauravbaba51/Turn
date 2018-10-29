@@ -1,0 +1,81 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<hr>
+
+<hr>
+<h1>Drag and Drop</h1>
+
+
+<ng-container *ngFor="let item of sourceList">
+  <div *ngIf="!item.selected"  class="box" dfDroppable [dfDroppableData]="item">
+    {{ item.label }}
+    <div *dfDraggableHelper class="box">{{ item.label }}</div>
+  </div>
+</ng-container>
+
+<div *ngFor="let zone of dropZones" class="area" dfDropZone (drop)="dropped($event, zone)">
+  <h3>{{ zone.title }}</h3>
+  <div *ngFor="let item of zone.items" class="box">
+    {{ item.label }}
+    <div *appDraggableHelper class="box">{{ item.label }}</div>
+  </div>
+</div>
+<hr>
+<hr>
+<h1>graph</h1>
+      <div style="display: block" class="d-block w-50 p-3 ">
+          <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasets"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+          </canvas>
+      </div>
+
+      <div style="display: block" class="d-block w-50 p-3 ">
+        <canvas mdbChart
+            [chartType]="chartType2"
+            [datasets]="chartDatasets"
+            [labels]="chartLabels"
+            [colors]="chartColors"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+        </canvas>
+    </div>
+    polarArea
+    <div style="display: block" class="d-block w-50 p-3 ">
+      <canvas mdbChart
+          [chartType]="chartType3"
+          [datasets]="chartDatasets"
+          [labels]="chartLabels"
+          [colors]="chartColors"
+          [options]="chartOptions"
+          [legend]="true"
+          (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)">
+      </canvas>
+  </div>
+  <hr>
+  <hr>
+
+  <p>Exporting an excel file of type .xslx !!!</p>
+  <p>Export as XLSX by clicking the below button</p>
+  <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+  <table>
+   <tr>
+     <td>Eid</td>
+     <td>Ename</td>
+     <td>Esal</td>
+   </tr>
+   <tr *ngFor="let item of data">
+     <td>{{item.eid}}</td>
+     <td>{{item.ename}}</td>
+     <td>{{item.esal}}</td>
+   </tr>
+  </table>
+  
